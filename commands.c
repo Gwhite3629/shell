@@ -1,12 +1,30 @@
-#include "commands.h"
+typedef struct command_t {
+    char name[32];
+    int hash;
+	int id;
+} command_t;
 
-command_t COMMANDS[SIZE] = {
+#define TABLESIZE 4
+
+command_t COMMANDS[TABLESIZE] = {
 {
     "EXIT",
-    2089051583
+    2089051583,
+    0
 },
 {
     "PRINT",
-    232054898
+    232054898,
+    1
+},
+{
+    "HELP",
+    2089138798,
+    2
+},
+{
+    "CLEAR",
+    216417516,
+    3
 }
 };

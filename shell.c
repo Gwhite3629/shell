@@ -6,6 +6,7 @@
 #include "read.h"
 #include "eval.h"
 #include "print.h"
+#include "commands.h"
 #include "help.h"
 
 // Tentative name: FuncS, Functional Shell
@@ -19,16 +20,20 @@ int main(int argc, char *argv[])
      * Also have a shell language
      */
 
+    init_table();
+
     int r = 0;
 
     char line[MAX_LINE];
     char result[MAX_LINE];
+    memset(result, 0, MAX_LINE);
     char **tokens;
+    int n_tokens = 0;
 
     while (!quit) {
-        r = read(line, tokens);
-        r = eval(tokens,result);
-        r = print(result);
+        r = read(line, &n_tokens, &tokens);
+        r = eval(tokens, n_tokens, result, &quit);
+        //r = print(result);
     }
 
     return r;

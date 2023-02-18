@@ -3,8 +3,8 @@
 
 #include "help.h"
 
-int read(char *line, char **tokens);
+int read(char *line, int *n_tokens, char ***tokens);
 
-int parse(char *line, char **tokens);
+int parse(char *line, int *n_tokens, char ***tokens);
 
 #endif // READ_H

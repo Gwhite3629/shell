@@ -9,15 +9,4 @@ typedef struct eval_t {
     eval_type type;
 } eval_t;
 
-static inline unsigned long
-hash(char *name)
-{
-	unsigned long val = 5381;
-	int c;
-	while ((c = *name++)) {
-		val = ((val << 5) + val) + c;
-	}
-	return (int)(val % (__INT_MAX__));
-}
-
 #endif // HELP_H
