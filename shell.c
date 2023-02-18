@@ -8,6 +8,7 @@
 #include "print.h"
 #include "commands.h"
 #include "help.h"
+#include "environment.h"
 
 // Tentative name: FuncS, Functional Shell
 
@@ -29,11 +30,12 @@ int main(int argc, char *argv[])
     memset(result, 0, MAX_LINE);
     char **tokens;
     int n_tokens = 0;
-
+    system("cls");
+    printf("%s > ", ENV.USERNAME);
     while (!quit) {
         r = read(line, &n_tokens, &tokens);
         r = eval(tokens, n_tokens, result, &quit);
-        //r = print(result);
+        r = print(result);
     }
 
     return r;

@@ -4,10 +4,11 @@
 
 #include "print.h"
 #include "help.h"
+#include "environment.h"
 
 int print(char *result)
 {
-    printf("\n%s\n", result);
+    printf("%s > ", ENV.USERNAME);
     
     return 0;
 }

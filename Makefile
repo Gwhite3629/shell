@@ -1,7 +1,7 @@
 CC=gcc
 LINK=gcc
 TARGET=FuncS.exe
-OBJS=shell.o read.o eval.o print.o commands.o
+OBJS=shell.o read.o eval.o print.o commands.o environment.o
 CFLAGS= -g -Wall -Wextra -O2
 LFLAGS= -g -O2
 
@@ -15,6 +15,7 @@ read.o: read.c
 eval.o: eval.c
 print.o: print.c
 commands.o: commands.c
+environment.o: environment.c
 
 .PHONY : clean
 
