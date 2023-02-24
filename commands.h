@@ -7,7 +7,7 @@ typedef struct command_t {
 	int id;
 } command_t;
 
-#define TABLESIZE 6
+#define TABLESIZE 9
 
 extern command_t COMMANDS;
 

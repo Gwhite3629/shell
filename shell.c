@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdatomic.h>
+#include <unistd.h>
 
 #include "read.h"
 #include "eval.h"
@@ -30,12 +31,20 @@ int main(int argc, char *argv[])
     memset(result, 0, MAX_LINE);
     char **tokens;
     int n_tokens = 0;
-    system("cls");
-    printf("%s > ", ENV.USERNAME);
+    char *p = malloc(MAX_LINE);
+    if (p == NULL) {
+        return -1;
+    }
+    if (getcwd(p, MAX_LINE) == NULL) {
+        return -1;
+    }
+    strcpy(ENV.path, p);
+    chdir(ENV.path);
+    system("clear");
     while (!quit) {
-        r = read(line, &n_tokens, &tokens);
-        r = eval(tokens, n_tokens, result, &quit);
         r = print(result);
+        r = readl(line, &n_tokens, &tokens);
+        r = eval(tokens, n_tokens, result, &quit);
     }
 
     return r;

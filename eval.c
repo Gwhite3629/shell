@@ -2,14 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdatomic.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "environment.h"
 #include "commands.h"
 #include "eval.h"
 #include "help.h"
+#include "file.h"
 
 int eval(char **tokens, int n_tokens, char *result, atomic_bool *quit)
 {
+    pid_t c;
+
     if (n_tokens <= 0) {
         return 0;
     }
@@ -40,10 +46,12 @@ HELP:\n\tDisplay this prompt\n\
 CLEAR:\n\tClear the screen\n\
 USER:\n\tSet username\n\
 PWD:\n\tDisplay current directory path\n\
+CD:\n\tChange Directory\n\
+LS:\n\tList files\n\
 ");
             break;
         case 3: // CLEAR
-            system("cls"); // try "clear" on linux
+            system("clear"); // try "clear" on linux, cls on windows
             break;
         case 4: // USER
             if (n_tokens < 2) {
@@ -54,7 +62,53 @@ PWD:\n\tDisplay current directory path\n\
             }
             break;
         case 5: // PWD
-            
+            printf("%s\n", ENV.path);
+            break;
+        case 6: // CD
+            if (n_tokens < 2) {
+                printf("Invalid: No target directory\n");
+            } else if (!strcmp(tokens[1], "..") | !strcmp(tokens[1], "../"))
+            {
+                if (!strcmp(ENV.path, "/")) {
+                    printf("Invalid: Already in root\n");
+                } else {
+                    char *tmp = strrchr(ENV.path, '/');
+                    memset(tmp, '\0', strlen(tmp));
+                    if (tmp == ENV.path) {
+                        ENV.path[0] = '/';
+                    }
+                }
+            } else if (!strcmp(tokens[1], ".") | !strcmp(tokens[1], "./")) {
+
+            } else if (tokens[1][0] == '/') {
+                int v = verify_absolute(tokens[1]);
+                if (v == 1) {
+                    strcpy(ENV.path, tokens[1]);
+                } else {
+                    printf("Invalid: Can't find dir\n");
+                }
+            } else {
+                int v = verify_path(tokens[1]);
+                if (v == 1) {
+                    strcat(ENV.path, "/");
+                    strcat(ENV.path, tokens[1]);
+                } else {
+                    printf("Invalid: Can't find dir\n");
+                }
+            }
+            chdir(ENV.path);
+            break;
+        case 7: // LS
+            c = fork();
+            if (0 == c)
+                execv("/bin/ls", tokens);
+            wait(NULL);
+            break;
+        case 8: // bash
+            c = fork();
+            if (0 == c)
+                execv("/bin/bash", tokens);
+            wait(NULL);
             break;
         default:
             break;

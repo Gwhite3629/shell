@@ -3,7 +3,7 @@
 
 #include "help.h"
 
-int read(char *line, int *n_tokens, char ***tokens);
+int readl(char *line, int *n_tokens, char ***tokens);
 
 int parse(char *line, int *n_tokens, char ***tokens);
 

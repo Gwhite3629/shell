@@ -5,7 +5,7 @@
 #include "read.h"
 #include "help.h"
 
-int read(char *line, int *n_tokens, char ***tokens) {
+int readl(char *line, int *n_tokens, char ***tokens) {
     int r = 0;
 
     memset(line, 0, MAX_LINE);

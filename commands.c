@@ -4,37 +4,52 @@ typedef struct command_t {
 	int id;
 } command_t;
 
-#define TABLESIZE 6
+#define TABLESIZE 9
 
 command_t COMMANDS[TABLESIZE] = {
 {
-    "EXIT",
-    2089051583,
+    "exit",
+    2090237505,
     0
 },
 {
-    "PRINT",
-    232054898,
+    "print",
+    271190388,
     1
 },
 {
-    "HELP",
-    2089138798,
+    "help",
+    2090324720,
     2
 },
 {
-    "CLEAR",
-    216417516,
+    "clear",
+    255553006,
     3
 },
 {
-    "USER",
-    2089620996,
+    "user",
+    2090806918,
     4
 },
 {
-    "PWD",
-    193467056,
+    "pwd",
+    193502992,
     5
+},
+{
+    "cd",
+    5863276,
+    6
+},
+{
+    "ls",
+    5863588,
+    7
+},
+{
+    "bash",
+    2090104965,
+    8
 }
 };
