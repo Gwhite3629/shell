@@ -40,14 +40,15 @@ int eval(char **tokens, int n_tokens, char *result, atomic_bool *quit)
             break;
         case 2: // HELP
             printf("\
-EXIT:\n\tExit the program\n\
-PRINT:\n\tPrint the rest of the line\n\
-HELP:\n\tDisplay this prompt\n\
-CLEAR:\n\tClear the screen\n\
-USER:\n\tSet username\n\
-PWD:\n\tDisplay current directory path\n\
-CD:\n\tChange Directory\n\
-LS:\n\tList files\n\
+exit:\n\tExit the program\n\
+print:\n\tPrint the rest of the line\n\
+help:\n\tDisplay this prompt\n\
+clear:\n\tClear the screen\n\
+user:\n\tSet username\n\
+pwd:\n\tDisplay current directory path\n\
+cd:\n\tChange Directory\n\
+ls:\n\tList files\n\
+bash:\n\tOpen the BASH shell\n\
 ");
             break;
         case 3: // CLEAR
