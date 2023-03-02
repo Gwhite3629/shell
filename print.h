@@ -3,6 +3,6 @@
 
 #include "help.h"
 
-int print(char *result);
+int print(void);
 
 #endif // PRINT_H

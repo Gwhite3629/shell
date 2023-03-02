@@ -10,6 +10,8 @@
 #include "commands.h"
 #include "help.h"
 #include "environment.h"
+#include "path.h"
+#include "file.h"
 
 // Tentative name: FuncS, Functional Shell
 
@@ -23,16 +25,25 @@ int main(int argc, char *argv[])
      */
 
     init_table();
-
     int r = 0;
 
+    path_t *path_table = NULL;
+    int size;
+
+    strcpy(ENV.home, getenv("HOME"));
+
+    r = read_path(&path_table, &size);
+    if (r < 0) {
+        printf("Failed to load path\n");
+        return -1;
+    }
+
     char line[MAX_LINE];
-    char result[MAX_LINE];
-    memset(result, 0, MAX_LINE);
-    char **tokens;
+    char **tokens = NULL;
     int n_tokens = 0;
     char *p = malloc(MAX_LINE);
     if (p == NULL) {
+        printf("Failed to allocate\n");
         return -1;
     }
     if (getcwd(p, MAX_LINE) == NULL) {
@@ -40,12 +51,40 @@ int main(int argc, char *argv[])
     }
     strcpy(ENV.path, p);
     chdir(ENV.path);
+
+    tokens = malloc(sizeof(char *)*1);
+    if (tokens == NULL) {
+        r = -1;
+        return r;
+    }
+
+    tokens[0] = malloc(sizeof(char)*32);
+    if (tokens[0] == NULL) {
+        r = -1;
+        return r;
+    }
+    memset(tokens[0], 0, sizeof(char)*32);
+
     system("clear");
     while (!quit) {
-        r = print(result);
+        r = print();
         r = readl(line, &n_tokens, &tokens);
-        r = eval(tokens, n_tokens, result, &quit);
+        r = eval(tokens, n_tokens, &quit, &path_table, &size);
+        for (int i = 1; i < n_tokens; i++) {
+            free(tokens[i]);
+        }
+        memset(tokens[0], 0, 32);
     }
+
+    if (tokens) {
+        if (tokens[0])
+            free(tokens[0]);
+        free(tokens);
+    }
+    if (path_table)
+        free(path_table);
+    if (p)
+        free(p);
 
     return r;
 }

@@ -4,7 +4,7 @@ typedef struct command_t {
 	int id;
 } command_t;
 
-#define TABLESIZE 9
+#define TABLESIZE 12
 
 command_t COMMANDS[TABLESIZE] = {
 {
@@ -51,5 +51,20 @@ command_t COMMANDS[TABLESIZE] = {
     "bash",
     2090104965,
     8
+},
+{
+    "add-path",
+    2135670865,
+    9
+},
+{
+    "del-path",
+    599048442,
+    10
+},
+{
+    "path",
+    2090608116,
+    11
 }
 };

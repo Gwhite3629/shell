@@ -6,9 +6,9 @@
 #include "help.h"
 #include "environment.h"
 
-int print(char *result)
+int print(void)
 {
-    printf("%s > ", ENV.USERNAME);
+    printf("%s%s%s:%s%s%s > ", KCYN, ENV.USERNAME, KNRM, KMAG, ENV.path, KNRM);
     
     return 0;
 }

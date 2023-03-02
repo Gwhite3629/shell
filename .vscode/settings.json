@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "*.fs": "fsharp",
-        "help.h": "c"
+        "help.h": "c",
+        "read.h": "c",
+        "stdlib.h": "c"
     }
 }

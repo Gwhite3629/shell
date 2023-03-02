@@ -12,19 +12,34 @@
 #include "help.h"
 #include "file.h"
 
-int eval(char **tokens, int n_tokens, char *result, atomic_bool *quit)
+int eval(char **tokens, int n_tokens, atomic_bool *quit, path_t **path_table, int *size)
 {
     pid_t c;
+    int r = 0;
 
     if (n_tokens <= 0) {
         return 0;
     }
 
     command_t temp;
+    path_t temppath;
     temp = lookup(tokens[0]);
+    temppath = path_lookup(tokens[0], (*path_table), (*size));
 
     if (temp.hash == 0) {
-        printf("Invalid command: %s\n", tokens[0]);
+        if (temppath.hash != 0) {
+            c = fork();
+            if (0 == c)
+                execv(temppath.path, tokens);
+            wait(NULL);
+        } else if (strchr(tokens[0],'/') == NULL) {
+            printf("Invalid command: %s\n", tokens[0]);
+        } else {
+            c = fork();
+            if (0 == c)
+                execv(tokens[0], tokens);
+            wait(NULL);
+        }
     }
 
     switch (temp.id) {
@@ -49,6 +64,9 @@ pwd:\n\tDisplay current directory path\n\
 cd:\n\tChange Directory\n\
 ls:\n\tList files\n\
 bash:\n\tOpen the BASH shell\n\
+add-path\n\tAdd variable to path\n\
+del-path\n\tRemove variable from path\n\
+path\n\tPrint the path\n\
 ");
             break;
         case 3: // CLEAR
@@ -98,18 +116,69 @@ bash:\n\tOpen the BASH shell\n\
                 }
             }
             chdir(ENV.path);
+            char *p = malloc(MAX_LINE);
+            if (p == NULL) {
+                printf("Failed to allocate\n");
+                return -1;
+            }
+            if (getcwd(p, MAX_LINE) == NULL) {
+                return -1;
+            }
+            strcpy(ENV.path, p);
+            free(p);
             break;
         case 7: // LS
             c = fork();
             if (0 == c)
-                execv("/bin/ls", tokens);
+                execv("/usr/bin/ls", tokens);
             wait(NULL);
             break;
         case 8: // bash
             c = fork();
             if (0 == c)
-                execv("/bin/bash", tokens);
+                execv("/usr/bin/bash", tokens);
             wait(NULL);
+            break;
+        case 9: // add-path
+            if (n_tokens == 1) {
+                printf("Please enter variable name and path\n");
+                return 0;
+            }
+            if (n_tokens == 2) {
+                printf("Please enter path after variable name\n");
+                return 0;
+            }
+            r = add_path(path_table, size, tokens[1], tokens[2]);
+            if (r < 0) {
+                printf("Failed to add variable to path\n");
+                return r;
+            }
+            r = write_path(path_table, size);
+            if (r < 0) {
+                printf("Failed to write path\n");
+                return r;
+            }
+            break;
+        case 10: // del-path
+            if (n_tokens == 1) {
+                printf("Please enter variable name\n");
+                return 0;
+            }
+            r = del_path(path_table, size, tokens[1]);
+            if (r < 0) {
+                printf("Failed to remove variable from path\n");
+                return r;
+            }
+            r = write_path(path_table, size);
+            if (r < 0) {
+                printf("Failed to write path\n");
+                return r;
+            }
+            break;
+        case 11: // path
+            for (int i = 0; i < (*size); i++) {
+                printf("\t%s %s\n", (*path_table)[i].name, (*path_table)[i].path);
+            }
             break;
         default:
             break;
