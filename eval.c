@@ -62,8 +62,6 @@ clear:\n\tClear the screen\n\
 user:\n\tSet username\n\
 pwd:\n\tDisplay current directory path\n\
 cd:\n\tChange Directory\n\
-ls:\n\tList files\n\
-bash:\n\tOpen the BASH shell\n\
 add-path\n\tAdd variable to path\n\
 del-path\n\tRemove variable from path\n\
 path\n\tPrint the path\n\
@@ -127,19 +125,7 @@ path\n\tPrint the path\n\
             strcpy(ENV.path, p);
             free(p);
             break;
-        case 7: // LS
-            c = fork();
-            if (0 == c)
-                execv("/usr/bin/ls", tokens);
-            wait(NULL);
-            break;
-        case 8: // bash
-            c = fork();
-            if (0 == c)
-                execv("/usr/bin/bash", tokens);
-            wait(NULL);
-            break;
-        case 9: // add-path
+        case 7: // add-path
             if (n_tokens == 1) {
                 printf("Please enter variable name and path\n");
                 return 0;
@@ -159,7 +145,7 @@ path\n\tPrint the path\n\
                 return r;
             }
             break;
-        case 10: // del-path
+        case 8: // del-path
             if (n_tokens == 1) {
                 printf("Please enter variable name\n");
                 return 0;
@@ -175,7 +161,7 @@ path\n\tPrint the path\n\
                 return r;
             }
             break;
-        case 11: // path
+        case 9: // path
             for (int i = 0; i < (*size); i++) {
                 printf("\t%s %s\n", (*path_table)[i].name, (*path_table)[i].path);
             }
