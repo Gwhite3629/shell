@@ -12,7 +12,7 @@
 #include "help.h"
 #include "file.h"
 
-int eval(char **tokens, int n_tokens, atomic_bool *quit, path_t **path_table, int *size)
+int eval(char **tokens, int n_tokens, atomic_bool *quit, path_t **path_table, int *size, config_t *cfg)
 {
     pid_t c;
     int r = 0;
@@ -76,6 +76,8 @@ path\n\tPrint the path\n\
                 return 0;
             } else {
                 strcpy(ENV.USERNAME, tokens[1]);
+                strcpy(cfg->username, tokens[1]);
+                r = write_config(cfg);
             }
             break;
         case 5: // PWD
@@ -84,8 +86,7 @@ path\n\tPrint the path\n\
         case 6: // CD
             if (n_tokens < 2) {
                 printf("Invalid: No target directory\n");
-            } else if (!strcmp(tokens[1], "..") | !strcmp(tokens[1], "../"))
-            {
+            } else if (!strcmp(tokens[1], "..") | !strcmp(tokens[1], "../")) {
                 if (!strcmp(ENV.path, "/")) {
                     printf("Invalid: Already in root\n");
                 } else {
@@ -170,5 +171,5 @@ path\n\tPrint the path\n\
             break;
     };
 
-    return 0;
+    return r;
 }

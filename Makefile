@@ -1,7 +1,7 @@
 CC=gcc
 LINK=gcc
 TARGET=FuncS
-OBJS=shell.o read.o eval.o print.o commands.o environment.o file.o
+OBJS=shell.o read.o eval.o print.o commands.o environment.o file.o config.o
 CFLAGS= -g -Wall -Wextra -O2
 LFLAGS= -g -O2
 
@@ -17,6 +17,7 @@ print.o: print.c
 commands.o: commands.c
 environment.o: environment.c
 file.o: file.c
+config.o: config.c
 
 .PHONY : clean
 

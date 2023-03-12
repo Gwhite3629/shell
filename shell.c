@@ -12,6 +12,7 @@
 #include "environment.h"
 #include "path.h"
 #include "file.h"
+#include "config.h"
 
 // Tentative name: FuncS, Functional Shell
 
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
     int r = 0;
 
     path_t *path_table = NULL;
+    config_t cfg;
     int size;
 
     strcpy(ENV.home, getenv("HOME"));
@@ -37,6 +39,8 @@ int main(int argc, char *argv[])
         printf("Failed to load path\n");
         return -1;
     }
+
+    r = read_config(&cfg);
 
     char line[MAX_LINE];
     char **tokens = NULL;
@@ -65,11 +69,13 @@ int main(int argc, char *argv[])
     }
     memset(tokens[0], 0, sizeof(char)*32);
 
+    strcpy(ENV.USERNAME, cfg.username);
+
     system("clear");
     while (!quit) {
-        r = print();
+        r = print(cfg);
         r = readl(line, &n_tokens, &tokens);
-        r = eval(tokens, n_tokens, &quit, &path_table, &size);
+        r = eval(tokens, n_tokens, &quit, &path_table, &size, &cfg);
         for (int i = 1; i < n_tokens; i++) {
             free(tokens[i]);
         }

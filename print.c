@@ -5,8 +5,9 @@
 #include "print.h"
 #include "help.h"
 #include "environment.h"
+#include "config.h"
 
-int print(void)
+int print(config_t cfg)
 {
     printf("%s%s%s:%s%s%s > ", KCYN, ENV.USERNAME, KNRM, KMAG, ENV.path, KNRM);
     
