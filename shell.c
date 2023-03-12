@@ -25,14 +25,21 @@ int main(int argc, char *argv[])
      * Also have a shell language
      */
 
-    init_table();
     int r = 0;
+
+    init_table();
 
     path_t *path_table = NULL;
     config_t cfg;
     int size;
 
     strcpy(ENV.home, getenv("HOME"));
+
+    r = verify_files();
+    if (r < 0) {
+        printf("Failed to verify files\n");
+        return -1;
+    }
 
     r = read_path(&path_table, &size);
     if (r < 0) {
@@ -41,6 +48,10 @@ int main(int argc, char *argv[])
     }
 
     r = read_config(&cfg);
+    if (r < 0) {
+        printf("Failed to load config\n");
+        return -1;
+    }
 
     char line[MAX_LINE];
     char **tokens = NULL;

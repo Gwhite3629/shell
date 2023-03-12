@@ -9,7 +9,7 @@
 
 int print(config_t cfg)
 {
-    printf("%s%s%s:%s%s%s > ", KCYN, ENV.USERNAME, KNRM, KMAG, ENV.path, KNRM);
+    printf("%s%s%s:%s%s%s > ", colors[cfg.name_color], ENV.USERNAME, KNRM, colors[cfg.path_color], ENV.path, KNRM);
     
     return 0;
 }

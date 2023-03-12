@@ -11,4 +11,8 @@ int read_config(config_t *cfg);
 
 int write_config(config_t *cfg);
 
+int verify_files(void);
+
+extern char colors[12][8];
+
 #endif // CONFIG_H

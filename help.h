@@ -19,4 +19,6 @@ typedef struct eval_t {
 #define KCYN  "\x1B[36m"
 #define KWHT  "\x1B[37m"
 
+#define ncolors 8
+
 #endif // HELP_H

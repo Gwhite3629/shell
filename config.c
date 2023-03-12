@@ -5,6 +5,18 @@
 
 #include "config.h"
 #include "environment.h"
+#include "help.h"
+
+char colors[12][8] = {
+    KNRM,
+    KRED,
+    KGRN,
+    KYEL,
+    KBLU,
+    KMAG,
+    KCYN,
+    KWHT
+};
 
 int read_config(config_t *cfg)
 {
@@ -54,4 +66,45 @@ int write_config(config_t *cfg)
     fclose(config_file);
 
     return r;
+}
+
+int verify_files(void)
+{
+    FILE *config_file;
+    FILE *path_file;
+    char c[4096];
+    char p[4096];
+
+    strcpy(p,ENV.home);
+    strcpy(c,ENV.home);
+    strcat(p,"/.FPath");
+    strcat(c,"/.Fconfig");
+
+    path_file = fopen(p, "r");
+    if (path_file == NULL) {
+        path_file = fopen(p, "w+");
+        if (path_file == NULL) {
+            printf("Failed to create path file");
+            perror(strerror(errno));
+            return -1;
+        }
+        fclose(path_file);
+    } else {
+        fclose(path_file);
+    }
+
+    config_file = fopen(c, "r");
+    if (config_file == NULL) {
+        config_file = fopen(c, "w+");
+        if (config_file == NULL) {
+            printf("Failed to create config file");
+            perror(strerror(errno));
+            return -1;
+        }
+        fclose(config_file);
+    } else {
+        fclose(config_file);
+    }
+
+    return 0;
 }

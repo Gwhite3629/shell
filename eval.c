@@ -65,6 +65,8 @@ cd:\n\tChange Directory\n\
 add-path\n\tAdd variable to path\n\
 del-path\n\tRemove variable from path\n\
 path\n\tPrint the path\n\
+ncolor\n\tSet color of name\n\
+pcolor\n\tSet color of path\n\
 ");
             break;
         case 3: // CLEAR
@@ -166,6 +168,22 @@ path\n\tPrint the path\n\
             for (int i = 0; i < (*size); i++) {
                 printf("\t%s %s\n", (*path_table)[i].name, (*path_table)[i].path);
             }
+            break;
+        case 10: // ncolor
+            if (n_tokens < 2) {
+                printf("Enter a color\n");
+                return r;
+            }
+            cfg->name_color = atoi(tokens[1]);
+            r = write_config(cfg) % ncolors;
+            break;
+        case 11: // pcolor
+            if (n_tokens < 2) {
+                printf("Enter a color\n");
+                return r;
+            }
+            cfg->path_color = atoi(tokens[1]) % ncolors;
+            r = write_config(cfg);
             break;
         default:
             break;
