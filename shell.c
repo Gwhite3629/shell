@@ -56,15 +56,8 @@ int main(int argc, char *argv[])
     char line[MAX_LINE];
     char **tokens = NULL;
     int n_tokens = 0;
-    char *p = malloc(MAX_LINE);
-    if (p == NULL) {
-        printf("Failed to allocate\n");
-        return -1;
-    }
-    if (getcwd(p, MAX_LINE) == NULL) {
-        return -1;
-    }
-    strcpy(ENV.path, p);
+
+    strcpy(ENV.path, ENV.home);
     chdir(ENV.path);
 
     tokens = malloc(sizeof(char *)*1);
@@ -100,8 +93,6 @@ int main(int argc, char *argv[])
     }
     if (path_table)
         free(path_table);
-    if (p)
-        free(p);
 
     return r;
 }

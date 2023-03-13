@@ -126,6 +126,7 @@ pcolor\n\tSet color of path\n\
                 return -1;
             }
             strcpy(ENV.path, p);
+
             free(p);
             break;
         case 7: // add-path
