@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdatomic.h>
 #include <unistd.h>
+#include <errno.h>
 
 #include "read.h"
 #include "eval.h"
@@ -38,18 +39,24 @@ int main(int argc, char *argv[])
     r = verify_files();
     if (r < 0) {
         printf("Failed to verify files\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
 
     r = read_path(&path_table, &size);
     if (r < 0) {
         printf("Failed to load path\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
 
     r = read_config(&cfg);
     if (r < 0) {
         printf("Failed to load config\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
 
@@ -62,12 +69,18 @@ int main(int argc, char *argv[])
 
     tokens = malloc(sizeof(char *)*1);
     if (tokens == NULL) {
+        printf("Failed to allocate\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         r = -1;
         return r;
     }
 
     tokens[0] = malloc(sizeof(char)*32);
     if (tokens[0] == NULL) {
+        printf("Failed to allocate\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         r = -1;
         return r;
     }

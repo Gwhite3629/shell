@@ -30,6 +30,7 @@ int read_config(config_t *cfg)
     config_file = fopen(p, "r");
     if (config_file == NULL) {
         printf("Failed to open file\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
         perror(strerror(errno));
         return -1;
     }
@@ -55,6 +56,7 @@ int write_config(config_t *cfg)
     config_file = fopen(p, "w");
     if (config_file == NULL) {
         printf("Failed to open file\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
         perror(strerror(errno));
         return -1;
     }
@@ -84,7 +86,8 @@ int verify_files(void)
     if (path_file == NULL) {
         path_file = fopen(p, "w+");
         if (path_file == NULL) {
-            printf("Failed to create path file");
+            printf("Failed to create path file\n");
+            printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
             perror(strerror(errno));
             return -1;
         }
@@ -97,7 +100,8 @@ int verify_files(void)
     if (config_file == NULL) {
         config_file = fopen(c, "w+");
         if (config_file == NULL) {
-            printf("Failed to create config file");
+            printf("Failed to create config file\n");
+            printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
             perror(strerror(errno));
             return -1;
         }

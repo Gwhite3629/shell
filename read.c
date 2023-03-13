@@ -18,6 +18,8 @@ int readl(char *line, int *n_tokens, char ***tokens) {
 
     tmp = realloc((*tokens), sizeof(char *) * ((*n_tokens)+1));
     if (tmp == NULL) {
+        printf("Failed to reallocate\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
         perror(strerror(errno));
         return -1;
     }
@@ -41,6 +43,8 @@ int parse(char *line, int *n_tokens, char ***tokens)
             wc++;
             tmp = realloc((*tokens), sizeof(char *) * (wc));
             if (tmp == NULL) {
+                printf("Failed to reallocate\n");
+                printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
                 perror(strerror(errno));
                 return -1;
             }

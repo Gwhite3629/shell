@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 #include "environment.h"
 #include "commands.h"
@@ -120,6 +121,8 @@ pcolor\n\tSet color of path\n\
             char *p = malloc(MAX_LINE);
             if (p == NULL) {
                 printf("Failed to allocate\n");
+                printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+                perror(strerror(errno));
                 return -1;
             }
             if (getcwd(p, MAX_LINE) == NULL) {

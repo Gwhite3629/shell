@@ -51,6 +51,7 @@ int read_path(path_t **path_table, int *size)
     path_file = fopen(p, "r");
     if (path_file == NULL) {
         printf("Failed to open file\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
         perror(strerror(errno));
         return -1;
     }
@@ -58,6 +59,8 @@ int read_path(path_t **path_table, int *size)
     (*path_table) = malloc(1*sizeof(path_t));
     if ((*path_table) == NULL) {
         printf("Failed to allocate\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
     (*size) = 1;
@@ -65,7 +68,9 @@ int read_path(path_t **path_table, int *size)
     while (fscanf(path_file, "%s %s\n", pname, ppath) != EOF) {
         (*size)++;
         temp = realloc((*path_table), (*size)*sizeof(path_t));
-        if ((*path_table) == NULL) {
+        if (temp == NULL) {
+            printf("Failed to reallocate\n");
+            printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
             perror(strerror(errno));
             return -1;
         }
@@ -74,13 +79,17 @@ int read_path(path_t **path_table, int *size)
         strcpy((*path_table)[(*size)-2].path, ppath);
         (*path_table)[(*size)-2].hash = hash(pname);
     }
-    (*size)--;
-    temp = realloc((*path_table), (*size)*sizeof(path_t));
-    if (temp == NULL) {
-        perror(strerror(errno));
-        return -1;
+    if ((*size) != 1) {
+        (*size)--;
+        temp = realloc((*path_table), (*size)*sizeof(path_t));
+        if (temp == NULL) {
+            printf("Failed to reallocate\n");
+            printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+            perror(strerror(errno));
+            return -1;
+        }
+        (*path_table) = temp;
     }
-    (*path_table) = temp;
 
     qsort((*path_table), (*size), sizeof(path_t), &path_cmp);
 
@@ -103,6 +112,8 @@ int add_path(path_t **path_table, int *size, char *pname, char *ppath)
     tmp = realloc((*path_table), (*size)*sizeof(path_t));
     if (tmp == NULL) {
         printf("Failed to reallocate\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
     (*path_table) = tmp;
@@ -127,6 +138,8 @@ int del_path(path_t **path_table, int *size, char *pname)
         tmp = realloc((*path_table), (*size)*sizeof(path_t));
         if (tmp == NULL) {
             printf("Failed to reallocate\n");
+            printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+            perror(strerror(errno));
             return -1;
         }
         (*path_table) = tmp;
@@ -149,6 +162,8 @@ int write_path(path_t **path_table, int *size)
     path_file = fopen(p, "w");
     if (path_file == NULL) {
         printf("Failed to open file\n");
+        printf("%s: %s: %d\n", __FILE__, __func__, __LINE__);
+        perror(strerror(errno));
         return -1;
     }
 
