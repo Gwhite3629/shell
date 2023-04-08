@@ -8,6 +8,7 @@
 #include "file.h"
 #include "environment.h"
 #include "path.h"
+#include "utils.h"
 
 int verify_path(char *path)
 {
@@ -63,6 +64,7 @@ int read_path(path_t **path_table, int *size)
         perror(strerror(errno));
         return -1;
     }
+    memset((*path_table), 0, 1*sizeof(path_t));
     (*size) = 1;
 
     while (fscanf(path_file, "%s %s\n", pname, ppath) != EOF) {
