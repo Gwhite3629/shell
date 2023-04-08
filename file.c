@@ -132,7 +132,7 @@ int del_path(path_t **path_table, int *size, char *pname)
     path_t *tmp = NULL;
     path_t temp = path_lookup(pname, (*path_table), (*size));
     path_t *scan = bsearch(&temp, (*path_table), (*size), sizeof(path_t), &path_cmp);
-    if (scan != NULL) {
+    if ((scan != NULL) & ((*size) > 1)) {
         temp = (*path_table)[(*size)-1];
         (*path_table)[(*size)-1] = (*scan);
         (*scan) = temp;
