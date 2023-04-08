@@ -1,897 +1,129 @@
-==1031== Memcheck, a memory error detector
-==1031== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1031== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
-==1031== Command: ./FuncS
-==1031== Parent PID: 376
-==1031== 
-==1031== Source and destination overlap in memcpy(0x4a47a40, 0x4a47a40, 4132)
-==1031==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8F7: del_path (file.c:137)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031== 
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A607: add_path (file.c:114)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 4
-==1031==    at 0x1099AC: path_cmp (path.h:17)
-==1031==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x1099AC: path_lookup (path.h:30)
-==1031==    by 0x1099AC: eval (eval.c:28)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 4
-==1031==    at 0x10A58C: path_cmp (path.h:17)
-==1031==    by 0x10A58C: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A58C: path_lookup (path.h:30)
-==1031==    by 0x10A58C: add_path (file.c:105)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 4
-==1031==    at 0x10A5D4: path_cmp (path.h:17)
-==1031==    by 0x10A5D4: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A5D4: add_path (file.c:106)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 1
-==1031==    at 0x486B5D8: strlen (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x48F4793: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 1
-==1031==    at 0x486B5EC: strlen (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x48F4793: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a41 is 1 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 1
-==1031==    at 0x490A550: _IO_default_xsputn (genops.c:394)
-==1031==    by 0x490A550: _IO_default_xsputn (genops.c:370)
-==1031==    by 0x490887B: _IO_new_file_xsputn (fileops.c:1264)
-==1031==    by 0x490887B: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 1
-==1031==    at 0x486D218: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x49087C3: _IO_new_file_xsputn (fileops.c:1235)
-==1031==    by 0x49087C3: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a64 is 36 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 1
-==1031==    at 0x486D228: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x49087C3: _IO_new_file_xsputn (fileops.c:1235)
-==1031==    by 0x49087C3: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a66 is 38 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 4
-==1031==    at 0x10A804: path_cmp (path.h:17)
-==1031==    by 0x10A804: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A804: path_lookup (path.h:30)
-==1031==    by 0x10A804: del_path (file.c:133)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 4
-==1031==    at 0x10A844: path_cmp (path.h:17)
-==1031==    by 0x10A844: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A844: del_path (file.c:134)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 8
-==1031==    at 0x486D120: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 8
-==1031==    at 0x486D134: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a48 is 8 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 8
-==1031==    at 0x486D13C: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a50 is 16 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 8
-==1031==    at 0x486D144: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a58 is 24 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 8
-==1031==    at 0x486D128: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid read of size 2
-==1031==    at 0x486D1E0: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a48a60 is 4,128 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid write of size 8
-==1031==    at 0x486D12C: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid write of size 8
-==1031==    at 0x486D138: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a48 is 8 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid write of size 8
-==1031==    at 0x486D140: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a50 is 16 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid write of size 8
-==1031==    at 0x486D148: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a58 is 24 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid write of size 2
-==1031==    at 0x486D1E4: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a48a60 is 4,128 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10933F: main (shell.c:108)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== HEAP SUMMARY:
-==1031==     in use at exit: 0 bytes in 0 blocks
-==1031==   total heap usage: 49 allocs, 51 frees, 66,984 bytes allocated
-==1031== 
-==1031== All heap blocks were freed -- no leaks are possible
-==1031== 
-==1031== ERROR SUMMARY: 1071 errors from 25 contexts (suppressed: 0 from 0)
-==1031== 
-==1031== 1 errors in context 1 of 25:
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10933F: main (shell.c:108)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 2 of 25:
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 3 of 25:
-==1031== Invalid read of size 8
-==1031==    at 0x486D120: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 4 of 25:
-==1031== Invalid read of size 4
-==1031==    at 0x10A844: path_cmp (path.h:17)
-==1031==    by 0x10A844: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A844: del_path (file.c:134)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 5 of 25:
-==1031== Invalid read of size 4
-==1031==    at 0x10A804: path_cmp (path.h:17)
-==1031==    by 0x10A804: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A804: path_lookup (path.h:30)
-==1031==    by 0x10A804: del_path (file.c:133)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 6 of 25:
-==1031== Invalid read of size 4
-==1031==    at 0x10A5D4: path_cmp (path.h:17)
-==1031==    by 0x10A5D4: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A5D4: add_path (file.c:106)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 7 of 25:
-==1031== Invalid read of size 4
-==1031==    at 0x10A58C: path_cmp (path.h:17)
-==1031==    by 0x10A58C: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x10A58C: path_lookup (path.h:30)
-==1031==    by 0x10A58C: add_path (file.c:105)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 1 errors in context 8 of 25:
-==1031== Invalid free() / delete / delete[] / realloc()
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A607: add_path (file.c:114)
-==1031==    by 0x109C7F: eval (eval.c:144)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 2 errors in context 9 of 25:
-==1031== Source and destination overlap in memcpy(0x4a47a40, 0x4a47a40, 4132)
-==1031==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8F7: del_path (file.c:137)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031== 
-==1031== 
-==1031== 2 errors in context 10 of 25:
-==1031== Invalid read of size 2
-==1031==    at 0x486D1E0: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a48a60 is 4,128 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 2 errors in context 11 of 25:
-==1031== Invalid read of size 1
-==1031==    at 0x486B5D8: strlen (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x48F4793: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 2 errors in context 12 of 25:
-==1031== Invalid read of size 1
-==1031==    at 0x490A550: _IO_default_xsputn (genops.c:394)
-==1031==    by 0x490A550: _IO_default_xsputn (genops.c:370)
-==1031==    by 0x490887B: _IO_new_file_xsputn (fileops.c:1264)
-==1031==    by 0x490887B: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 3 errors in context 13 of 25:
-==1031== Invalid read of size 1
-==1031==    at 0x486D218: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x49087C3: _IO_new_file_xsputn (fileops.c:1235)
-==1031==    by 0x49087C3: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a64 is 36 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 4 errors in context 14 of 25:
-==1031== Invalid write of size 2
-==1031==    at 0x486D1E4: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a48a60 is 4,128 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 4 errors in context 15 of 25:
-==1031== Invalid read of size 4
-==1031==    at 0x1099AC: path_cmp (path.h:17)
-==1031==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
-==1031==    by 0x1099AC: path_lookup (path.h:30)
-==1031==    by 0x1099AC: eval (eval.c:28)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 4 errors in context 16 of 25:
-==1031== Invalid read of size 1
-==1031==    at 0x486D228: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x49087C3: _IO_new_file_xsputn (fileops.c:1235)
-==1031==    by 0x49087C3: _IO_file_xsputn@@GLIBC_2.17 (fileops.c:1196)
-==1031==    by 0x48F4A57: outstring_func (vfprintf-internal.c:239)
-==1031==    by 0x48F4A57: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a66 is 38 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 9 errors in context 17 of 25:
-==1031== Invalid read of size 1
-==1031==    at 0x486B5EC: strlen (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x48F4793: __vfprintf_internal (vfprintf-internal.c:1517)
-==1031==    by 0x48E229F: fprintf (fprintf.c:32)
-==1031==    by 0x10AA67: write_path (file.c:173)
-==1031==    by 0x109C93: eval (eval.c:165)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a41 is 1 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 128 errors in context 18 of 25:
-==1031== Invalid read of size 8
-==1031==    at 0x486D128: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a60 is 32 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 19 of 25:
-==1031== Invalid write of size 8
-==1031==    at 0x486D148: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a58 is 24 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 20 of 25:
-==1031== Invalid write of size 8
-==1031==    at 0x486D140: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a50 is 16 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 21 of 25:
-==1031== Invalid write of size 8
-==1031==    at 0x486D138: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a48 is 8 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 22 of 25:
-==1031== Invalid write of size 8
-==1031==    at 0x486D12C: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A907: del_path (file.c:138)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a40 is 0 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 23 of 25:
-==1031== Invalid read of size 8
-==1031==    at 0x486D144: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a58 is 24 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 24 of 25:
-==1031== Invalid read of size 8
-==1031==    at 0x486D13C: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a50 is 16 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== 
-==1031== 129 errors in context 25 of 25:
-==1031== Invalid read of size 8
-==1031==    at 0x486D134: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A8E7: del_path (file.c:136)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Address 0x4a47a48 is 8 bytes inside a block of size 4,132 free'd
-==1031==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A91F: del_path (file.c:140)
-==1031==    by 0x109CC3: eval (eval.c:160)
-==1031==    by 0x1092BB: main (shell.c:95)
-==1031==  Block was alloc'd at
-==1031==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1031==    by 0x10A373: read_path (file.c:86)
-==1031==    by 0x1091D3: main (shell.c:47)
-==1031== 
-==1031== ERROR SUMMARY: 1071 errors from 25 contexts (suppressed: 0 from 0)
+==1089== Memcheck, a memory error detector
+==1089== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1089== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==1089== Command: ./FuncS
+==1089== Parent PID: 376
+==1089== 
+==1089== Source and destination overlap in memcpy(0x4a426a0, 0x4a426a0, 4132)
+==1089==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A8F7: del_path (file.c:137)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089== 
+==1089== Invalid free() / delete / delete[] / realloc()
+==1089==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A607: add_path (file.c:114)
+==1089==    by 0x109C7F: eval (eval.c:144)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== Invalid read of size 4
+==1089==    at 0x1099AC: path_cmp (path.h:17)
+==1089==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
+==1089==    by 0x1099AC: path_lookup (path.h:30)
+==1089==    by 0x1099AC: eval (eval.c:28)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Address 0x4a426c0 is 32 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== Invalid free() / delete / delete[] / realloc()
+==1089==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10933F: main (shell.c:108)
+==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== 
+==1089== HEAP SUMMARY:
+==1089==     in use at exit: 0 bytes in 0 blocks
+==1089==   total heap usage: 38 allocs, 39 frees, 44,892 bytes allocated
+==1089== 
+==1089== All heap blocks were freed -- no leaks are possible
+==1089== 
+==1089== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
+==1089== 
+==1089== 1 errors in context 1 of 4:
+==1089== Invalid free() / delete / delete[] / realloc()
+==1089==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10933F: main (shell.c:108)
+==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== 
+==1089== 1 errors in context 2 of 4:
+==1089== Invalid read of size 4
+==1089==    at 0x1099AC: path_cmp (path.h:17)
+==1089==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
+==1089==    by 0x1099AC: path_lookup (path.h:30)
+==1089==    by 0x1099AC: eval (eval.c:28)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Address 0x4a426c0 is 32 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== 
+==1089== 1 errors in context 3 of 4:
+==1089== Invalid free() / delete / delete[] / realloc()
+==1089==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A607: add_path (file.c:114)
+==1089==    by 0x109C7F: eval (eval.c:144)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
+==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A91F: del_path (file.c:140)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089==  Block was alloc'd at
+==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A243: read_path (file.c:60)
+==1089==    by 0x1091D3: main (shell.c:47)
+==1089== 
+==1089== 
+==1089== 1 errors in context 4 of 4:
+==1089== Source and destination overlap in memcpy(0x4a426a0, 0x4a426a0, 4132)
+==1089==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
+==1089==    by 0x10A8F7: del_path (file.c:137)
+==1089==    by 0x109CC3: eval (eval.c:160)
+==1089==    by 0x1092BB: main (shell.c:95)
+==1089== 
+==1089== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)

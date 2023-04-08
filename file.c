@@ -81,7 +81,7 @@ int read_path(path_t **path_table, int *size)
         strcpy((*path_table)[(*size)-2].path, ppath);
         (*path_table)[(*size)-2].hash = hash(pname);
     }
-    if ((*size) != 1) {
+    if ((*size) > 1) {
         (*size)--;
         temp = realloc((*path_table), (*size)*sizeof(path_t));
         if (temp == NULL) {
