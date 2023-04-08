@@ -105,6 +105,9 @@ int verify_files(void)
             perror(strerror(errno));
             return -1;
         }
+        fprintf(config_file, "user: Default");
+        fprintf(config_file, "ncolor: 0");
+        fprintf(config_file, "pcolor: 0");
         fclose(config_file);
     } else {
         fclose(config_file);
