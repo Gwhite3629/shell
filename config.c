@@ -91,6 +91,7 @@ int verify_files(void)
             perror(strerror(errno));
             return -1;
         }
+        fprintf(path_file, "ls /bin/ls\n");
         fclose(path_file);
     } else {
         fclose(path_file);
