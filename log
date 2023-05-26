@@ -1,129 +1,15 @@
-==1089== Memcheck, a memory error detector
-==1089== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1089== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
-==1089== Command: ./FuncS
-==1089== Parent PID: 376
-==1089== 
-==1089== Source and destination overlap in memcpy(0x4a426a0, 0x4a426a0, 4132)
-==1089==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A8F7: del_path (file.c:137)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089== 
-==1089== Invalid free() / delete / delete[] / realloc()
-==1089==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A607: add_path (file.c:114)
-==1089==    by 0x109C7F: eval (eval.c:144)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== Invalid read of size 4
-==1089==    at 0x1099AC: path_cmp (path.h:17)
-==1089==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
-==1089==    by 0x1099AC: path_lookup (path.h:30)
-==1089==    by 0x1099AC: eval (eval.c:28)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Address 0x4a426c0 is 32 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== Invalid free() / delete / delete[] / realloc()
-==1089==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10933F: main (shell.c:108)
-==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== 
-==1089== HEAP SUMMARY:
-==1089==     in use at exit: 0 bytes in 0 blocks
-==1089==   total heap usage: 38 allocs, 39 frees, 44,892 bytes allocated
-==1089== 
-==1089== All heap blocks were freed -- no leaks are possible
-==1089== 
-==1089== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
-==1089== 
-==1089== 1 errors in context 1 of 4:
-==1089== Invalid free() / delete / delete[] / realloc()
-==1089==    at 0x4867E80: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10933F: main (shell.c:108)
-==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== 
-==1089== 1 errors in context 2 of 4:
-==1089== Invalid read of size 4
-==1089==    at 0x1099AC: path_cmp (path.h:17)
-==1089==    by 0x1099AC: bsearch (stdlib-bsearch.h:33)
-==1089==    by 0x1099AC: path_lookup (path.h:30)
-==1089==    by 0x1099AC: eval (eval.c:28)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Address 0x4a426c0 is 32 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== 
-==1089== 1 errors in context 3 of 4:
-==1089== Invalid free() / delete / delete[] / realloc()
-==1089==    at 0x486A504: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A607: add_path (file.c:114)
-==1089==    by 0x109C7F: eval (eval.c:144)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Address 0x4a426a0 is 0 bytes inside a block of size 4,132 free'd
-==1089==    at 0x4867DE0: free (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x486A59B: realloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A91F: del_path (file.c:140)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089==  Block was alloc'd at
-==1089==    at 0x486A2D4: calloc (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A243: read_path (file.c:60)
-==1089==    by 0x1091D3: main (shell.c:47)
-==1089== 
-==1089== 
-==1089== 1 errors in context 4 of 4:
-==1089== Source and destination overlap in memcpy(0x4a426a0, 0x4a426a0, 4132)
-==1089==    at 0x486CF60: memcpy (in /usr/lib/valgrind/vgpreload_memcheck-arm64-linux.so)
-==1089==    by 0x10A8F7: del_path (file.c:137)
-==1089==    by 0x109CC3: eval (eval.c:160)
-==1089==    by 0x1092BB: main (shell.c:95)
-==1089== 
-==1089== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
+==392== Memcheck, a memory error detector
+==392== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==392== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==392== Command: ./FuncS
+==392== Parent PID: 291
+==392== 
+==392== 
+==392== HEAP SUMMARY:
+==392==     in use at exit: 0 bytes in 0 blocks
+==392==   total heap usage: 38 allocs, 38 frees, 113,964 bytes allocated
+==392== 
+==392== All heap blocks were freed -- no leaks are possible
+==392== 
+==392== For lists of detected and suppressed errors, rerun with: -s
+==392== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
